@@ -1,0 +1,19 @@
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Directory with the build output
+  publish = "dist"
+  
+  # Base directory (optional, defaults to root)
+  base = "."
+
+[build.environment]
+  # Node version
+  NODE_VERSION = "18"
+
+# Redirect rules for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

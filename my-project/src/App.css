@@ -1,0 +1,338 @@
+.app-container {
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Section */
+.app-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+  animation: slideDown var(--transition-slow) ease-out;
+}
+
+.app-title {
+  margin-bottom: var(--spacing-sm);
+}
+
+.app-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main Content Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+  gap: var(--spacing-xl);
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Feature Card */
+.feature-card {
+  animation: slideUp var(--transition-slow) ease-out;
+  animation-fill-mode: both;
+  position: relative;
+}
+
+.feature-card:nth-child(1) {
+  animation-delay: 100ms;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+      var(--color-accent-purple),
+      var(--color-accent-pink));
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg,
+      var(--color-accent-purple),
+      var(--color-accent-pink));
+  border-radius: var(--radius-md);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Controls Section */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.control-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Microphone Button */
+.mic-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+}
+
+.mic-button {
+  position: relative;
+}
+
+.mic-button.recording {
+  background: linear-gradient(135deg,
+      var(--color-accent-pink),
+      #f43f5e);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.mic-button .mic-icon {
+  transition: transform var(--transition-base);
+}
+
+.mic-button:hover .mic-icon {
+  transform: scale(1.1);
+}
+
+/* Output Display */
+.output-display {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  min-height: 150px;
+  max-height: 300px;
+  overflow-y: auto;
+  transition: all var(--transition-base);
+}
+
+.output-display:focus-within {
+  border-color: var(--color-accent-purple);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+.output-text {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.output-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  width: fit-content;
+  margin-top: var(--spacing-md);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+}
+
+.status-dot.active {
+  background: var(--color-accent-pink);
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Speaker Button */
+.speaker-button {
+  background: linear-gradient(135deg,
+      var(--color-accent-blue),
+      var(--color-accent-cyan));
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.speaker-button:hover {
+  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.6);
+}
+
+.speaker-button.speaking {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.speaker-button .speaker-icon {
+  transition: transform var(--transition-base);
+}
+
+.speaker-button:hover .speaker-icon {
+  transform: scale(1.1);
+}
+
+/* Error Message */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  color: #fca5a5;
+  font-size: 0.875rem;
+  margin-top: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.error-icon {
+  font-size: 1.25rem;
+}
+
+/* Info Box */
+.info-box {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.app-footer a {
+  color: var(--color-accent-purple);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.app-footer a:hover {
+  color: var(--color-accent-pink);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: var(--spacing-md);
+  }
+
+  .features-grid {
+    gap: var(--spacing-lg);
+  }
+
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .output-display {
+    min-height: 120px;
+  }
+}
